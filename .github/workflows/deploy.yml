@@ -14,7 +14,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          ref: ${{ github.payload.pull_request.head.ref }}
+          ref: ${{github.event.pull_request.head.ref}}
+          repository: ${{github.event.pull_request.head.repo.full_name}}
       - name: Deploy to Vercel Action
         uses: BetaHuhn/deploy-to-vercel-action@develop
         with:
