@@ -16,8 +16,11 @@ jobs:
         with:
           script: |
             const isPr = [ 'pull_request', 'pull_request_target' ].includes(github.eventName)
+            console.log(isPr)
             const ref = isPr ? github.event.pull_request.head.ref : github.ref
+            console.log(ref)
             const repo = isPr ? github.event.pull_request.head.repo.full_name : github.repository
+            console.log(repo)
             return {ref, repo}
 
       - name: Checkout
