@@ -15,11 +15,11 @@ jobs:
         uses: actions/github-script@v3
         with:
           script: |
-            const isPr = [ 'pull_request', 'pull_request_target' ].includes(github.event_name)
+            const isPr = [ 'pull_request', 'pull_request_target' ].includes(context.eventName)
             console.log(isPr)
-            const ref = isPr ? github.event.pull_request.head.ref : github.ref
+            const ref = isPr ? context.payload.pull_request.head.ref : context.ref
             console.log(ref)
-            const repo = isPr ? github.event.pull_request.head.repo.full_name : github.repository
+            const repo = isPr ? context.payload.pull_request.head.repo.full_name : github.repo.repo
             console.log(repo)
             return {ref, repo}
 
