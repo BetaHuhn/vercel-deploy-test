@@ -15,7 +15,7 @@ jobs:
         uses: actions/github-script@v3
         with:
           script: |
-            const isPr = [ 'pull_request', 'pull_request_target' ].includes(github.eventName)
+            const isPr = [ 'pull_request', 'pull_request_target' ].includes(github.event_name)
             console.log(isPr)
             const ref = isPr ? github.event.pull_request.head.ref : github.ref
             console.log(ref)
