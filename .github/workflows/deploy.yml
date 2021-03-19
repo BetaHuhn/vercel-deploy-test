@@ -14,13 +14,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Deploy to Vercel Action
-        uses: BetaHuhn/deploy-to-vercel-action@master
+        uses: BetaHuhn/deploy-to-vercel-action@feat/commit-info
         with:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
           ALIAS_DOMAINS: |
-            {USER}-{REPO}-{BRANCH}.now.sh
-            gha-deploy.now.sh
-          PR_PREVIEW_DOMAIN: "{REPO}-{PR}.now.sh"
+            {USER}-{REPO}-{BRANCH}.vercel.app
+            gha-deploy.vercel.app
+          PR_PREVIEW_DOMAIN: "{REPO}-{PR}.vercel.app"
