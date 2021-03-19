@@ -11,11 +11,21 @@ jobs:
     runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, '[skip ci]')"
     steps:
+      - id: script
+        uses: actions/github-script@v3
+        with:
+          script: |
+            const isPr = [ 'pull_request', 'pull_request_target' ].includes(github.eventName)
+            const ref = isPr ? github.event.pull_request.head.ref : github.ref
+            const repo = isPr ? github.event.pull_request.head.repo.full_name : github.repository
+            return {ref, repo}
+
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          ref: ${{ github.event.pull_request.head.ref }}
-          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ steps.script.outputs.result.ref }}
+          repository: ${{ steps.script.outputs.result.repo }}
+
       - name: Deploy to Vercel Action
         uses: BetaHuhn/deploy-to-vercel-action@develop
         with:
