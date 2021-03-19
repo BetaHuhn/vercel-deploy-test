@@ -14,7 +14,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Deploy to Vercel Action
-        uses: BetaHuhn/deploy-to-vercel-action@feat/commit-info
+        uses: BetaHuhn/deploy-to-vercel-action@develop
         with:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
