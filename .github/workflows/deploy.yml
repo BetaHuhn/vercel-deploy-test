@@ -19,7 +19,7 @@ jobs:
             console.log(isPr)
             const ref = isPr ? context.payload.pull_request.head.ref : context.ref
             console.log(ref)
-            const repo = isPr ? context.payload.pull_request.head.repo.full_name : github.repo.repo
+            const repo = isPr ? context.payload.pull_request.head.repo.full_name : context.repo.repo
             console.log(repo)
             return {ref, repo}
 
