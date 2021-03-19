@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <h2>This app was deployed to Vercel with <a href="https://github.com/BetaHuhn/deploy-to-vercel-action">deploy-to-vercel-action</a></h2>
+    <h2>This app was deployed to Vercel with <a href="https://github.com/BetaHuhn/deploy-to-vercel-action">deploy-to-vercel-action</a> by <a href="https://github.com/BetaHuhn">@BetaHuhn</a></h2>
     <p>
       For a guide and recipes on how to configure / customize this project,<br>
       check out the
