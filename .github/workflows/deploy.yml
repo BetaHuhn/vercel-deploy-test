@@ -16,18 +16,14 @@ jobs:
         with:
           script: |
             const isPr = [ 'pull_request', 'pull_request_target' ].includes(context.eventName)
-            console.log(isPr)
-            const ref = isPr ? context.payload.pull_request.head.ref : context.ref
-            console.log(ref)
-            const repo = isPr ? context.payload.pull_request.head.repo.full_name : context.repo.repo
-            console.log(repo)
-            return {ref, repo}
+            core.setOutput('ref', isPr ? context.payload.pull_request.head.ref : context.ref)
+            core.setOutput('repo', isPr ? context.payload.pull_request.head.repo.full_name : context.repo.repo)
 
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          ref: ${{ steps.script.outputs.result.ref }}
-          repository: ${{ steps.script.outputs.result.repo }}
+          ref: ${{ steps.script.outputs.ref }}
+          repository: ${{ steps.script.outputs.repo }}
 
       - name: Deploy to Vercel Action
         uses: BetaHuhn/deploy-to-vercel-action@develop
