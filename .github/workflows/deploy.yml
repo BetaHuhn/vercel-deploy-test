@@ -36,3 +36,4 @@ jobs:
             {USER}-{REPO}-{BRANCH}.vercel.app
             gha-deploy.vercel.app
           PR_PREVIEW_DOMAIN: "{REPO}-{PR}.vercel.app"
+          CANCEL_IN_PROGRESS_DEPLOYMENT: true
